@@ -34,7 +34,7 @@ io.on('connection', (socket) => {
             let recipient = data.message.split(':')[0].substr(1)
             let rcpSocket = usersockets[recipient]
             io.to(rcpSocket).emit("recieve_chat", {
-                message: data.message.split(':')[1],
+                message: `[PRIVATE]`+data.message.split(':')[1],
                 username: data.username
             })
         }

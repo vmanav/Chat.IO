@@ -6,17 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+
     <script src="socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="script.js"></script>
+
+    <style>
+    
+    #loginDiv {
+        border: 2px solid black;
+        border-radius: 10px;
+        padding: auto;
+    }
+   
+    #loginInput{
+        height: 40px;
+    }
+
+    #loginButton{
+        height: 40px;
+        font-size:22px
+    }
+    </style>
 </head>
 
 <body>
-    <h1>Welcome to chat.io</h1>
-    <input type="text" placeholder="username" id="inputChat">
-    <button id="login">Login</button>
-    <button id="sendChat">Send</button>
-    <ul id="msgList"></ul>
+    <div id="main">
+
+        <div id="loginDiv">
+            
+            <input type="text" placeholder="Enter username" id="loginInput">
+            <button id="loginButton"><i class="fa fa-angle-right"></i></button>
+        </div>
+
+        <div id="chatDiv" style="display:none">
+            <input type="text" placeholder="New Message" id="chatInput">
+            <button id="chatButton">Send</button>
+            <ul id="msgList"></ul>
+        </div>
+
+    </div>
+
 </body>
 
 </html>
