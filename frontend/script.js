@@ -20,9 +20,29 @@ $(function () {
     let msgList = $('#msgList')
 
     loginButton.click(() => {
-        loginDiv.hide()
-        chatDiv.show()
 
+        if (loginInput.val() == "") {
+            alert("Username can't be empty.")
+            return
+        }
+
+        loginDiv.removeClass("d-flex").addClass("d-none");
+
+        // loginDiv.hide("fast", () => {
+        //     console.log("hide hogya lagta h")
+        //     chatDiv.show("slow")
+        //     // chatDiv.fadeIn("fast")
+
+        // })
+        chatDiv.show("slow")
+        // chatDiv.show()
+        // loginDiv.fadeOut("fast")
+
+
+        // chatDiv.css("margin-top", "0px")
+        // chatDiv.css("transition","2s")
+        // alert("hhihih")
+        // chatDiv.fadeIn("slow")
         user = loginInput.val()
 
         socket.emit('login', {
@@ -39,7 +59,7 @@ $(function () {
     })
 
     socket.on('recieve_chat', (data) => {
-        msgList.append(`<li>${data.username}:${data.message}</li>`)
+        msgList.prepend(`<li>${data.username}:${data.message}</li>`)
     })
 
 })

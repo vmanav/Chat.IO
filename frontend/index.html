@@ -5,47 +5,137 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>chat.io</title>
 
+    <!-- socket.io inbuilt <script></script> -->
     <script src="socket.io/socket.io.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <!-- fa fa icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- my script -->
     <script src="script.js"></script>
+    <!-- <font>-->
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,600i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Caveat:700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">  
+    <link href="https://fonts.googleapis.com/css?family=Beth+Ellen&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Neucha&display=swap" rel="stylesheet">
+
+
 
     <style>
-    
-    #loginDiv {
-        border: 2px solid black;
-        border-radius: 10px;
-        padding: auto;
-    }
-   
-    #loginInput{
-        height: 40px;
-    }
+        body {
+            background: linear-gradient(rgba(255, 255, 255, .7), rgba(255, 255, 255, .7)), url("/bg.jpg");
 
-    #loginButton{
-        height: 40px;
-        font-size:22px
-    }
+        }
+
+        #loginDiv {
+            background-color: lightblue;
+            height: 100vh;
+        }
+
+        #cubeBox {
+            background-color: green;
+            height: 50vh;
+            border-radius: 5px;
+            width: 75%;
+
+
+        }
+
+        #cubeBoxBack1 {
+            height: 50vh;
+            width: 75%;
+            position: absolute;
+            background-color: darkorange;
+            transform: rotate(-5deg);
+        }
+
+        #cubeBoxBack2 {
+            height: 50vh;
+            width: 75%;
+            position: absolute;
+            background-color: yellow;
+            transform: rotate(5deg);
+        }
+
+        #chatDiv {
+            background-color: lightsalmon;
+            height: 100vh;
+            /* margin-top: -200vh; */
+        }
+
+
+
+        #heading {
+            text-align: center;
+            background-color: bisque;
+            font-size: 68px;
+            background: -webkit-linear-gradient(#eee, #333);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            /* font-family: 'IBM Plex Mono', monospace; */
+            /* font-family: 'Pacifico', cursive; */
+            font-family: 'Caveat', cursive;
+
+        }
+
+        #loginButton{
+            /* font-family: 'Luckiest Guy', cursive; */
+            /* font-family: 'Permanent Marker', cursive; */
+            /* font-family: 'Beth Ellen', cursive; */
+            font-family: 'Neucha', cursive;
+
+        }
     </style>
 </head>
 
 <body>
-    <div id="main">
 
-        <div id="loginDiv">
-            
-            <input type="text" placeholder="Enter username" id="loginInput">
-            <button id="loginButton"><i class="fa fa-angle-right"></i></button>
+    <div id="main" class="container">
+
+        <div id="loginDiv" class="container d-flex flex-column justify-content-center align-items-center">
+            <br><br>
+
+
+            <div id="cubeBox" class="d-flex flex-column justify-content-around">
+
+                <div id="heading">
+                    <span>Chat.IO</span>
+                </div>
+
+                <div class="form-group d-flex flex-row justify-content-center">
+                    <input type="text" class="form-control" id="loginInput" placeholder="Enter Username"
+                        style="width: 30%;">
+                    <button id="loginButton" type="button" class="btn btn-dark"><i
+                            class="fa fa-angle-right"></i></button>
+                </div>
+
+            </div>
+
         </div>
 
+
+
         <div id="chatDiv" style="display:none">
-            <input type="text" placeholder="New Message" id="chatInput">
-            <button id="chatButton">Send</button>
+            <!-- <input type="text" placeholder="New Message" id="chatInput">
+            <button id="chatButton">Send</button> -->
+            <!-- <ul id="msgList"></ul> -->
+
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="New Message" id="chatInput" style="width: 50%;">
+                <button id="chatButton" type="button" class="btn btn-success">Send</button>
+            </div>
+
             <ul id="msgList"></ul>
+
         </div>
 
     </div>
