@@ -33,12 +33,28 @@ io.on('connection', (socket) => {
             // split at :, then remove '@' from begining
             let recipient = data.message.split(':')[0].substr(1)
             let rcpSocket = usersockets[recipient]
+
+
+            //whwn no user exists for private mssg
+            if (typeof (rcpSocket) == "undefined") {
+                console.log("No such user Found")
+
+                io.to(usersockets[data.username]).emit("recieve_chat", {
+                    message: ' No Such User Found!',
+                    username: 'Error while sending to ' + recipient
+                })
+                return;
+            }
+
+            // user exists
             io.to(rcpSocket).emit("recieve_chat", {
-                message: `[PRIVATE]`+data.message.split(':')[1],
+                message: `[PRIVATE]` + data.message.split(':')[1],
                 username: data.username
             })
+
         }
         else {
+            // Normal mssg case    
             io.emit("recieve_chat", {
                 message: data.message,
                 username: data.username

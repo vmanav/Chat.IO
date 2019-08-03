@@ -34,7 +34,7 @@ $(function () {
         //     // chatDiv.fadeIn("fast")
 
         // })
-        chatDiv.show("slow")
+        chatDiv.show("fast")
         // chatDiv.show()
         // loginDiv.fadeOut("fast")
 
@@ -51,6 +51,13 @@ $(function () {
     })
 
     chatButton.click(() => {
+
+        // sending empty messages
+        if (chatInput.val() == "") {
+            alert("Message can't be body empty!")
+            return
+        }
+
         socket.emit('send_chat', {
             username: user,
             message: chatInput.val()
@@ -60,6 +67,11 @@ $(function () {
 
     socket.on('recieve_chat', (data) => {
         msgList.prepend(`<li>${data.username}:${data.message}</li>`)
+        // $("#msgList :first-child").css("color","green")
+        $("#msgList :first-child").css({"color":"green", "transform":"scaleY(1.3)","background-color":"lightgreen"})
+        setTimeout(()=>{
+            $("#msgList :first-child").css({"color":"inherit", "transform":"scaleY(1)", "background-color":"transparent"})
+        },300)
     })
 
 })
