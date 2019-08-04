@@ -75,6 +75,41 @@
             /* font-family: 'Pacifico', cursive; */
             font-family: 'Caveat', cursive;
         }
+
+        .list-group-item {
+            background-color: transparent;
+        }
+
+        #clearChat {
+            background-color: #FFB61E;
+            opacity: 0.7;
+        }
+
+        #clearChat:hover {
+            opacity: 1;
+            transition: 0.3s;
+            transform: scale(1.05)
+        }
+
+        #chatButton {
+            background-color: #26A65B;
+            opacity: 0.7;
+        }
+
+        #chatButton:hover {
+            opacity: 1;
+            transition: 0.3s;
+            transform: scale(1.05)
+        }
+
+        #chatInput {
+            opacity: 0.6;
+        }
+
+        #chatInput:focus {
+            opacity: 0.9;
+
+        }
     </style>
 </head>
 
@@ -110,72 +145,62 @@
         <div id="chatDiv">
             <!-- style="display:none"> -->
 
-            <div class="container form-group d-flex flex-row justify-content-center p-3" style="position: sticky;top: 0;">
+            <div class="container form-group d-flex flex-row justify-content-center p-3"
+                style="position: sticky;top: 0;z-index: 1;">
+                <button type="button" id="clearChat" class="btn mr-2">Clear Chat</button>
                 <input type="text" class="form-control" placeholder="New Message" id="chatInput" style="width: 50%;">
-                <button id="chatButton" type="button" class="btn btn-success">Send</button>
+                <button id="chatButton" type="button" class="btn ml-2">Send</button>
             </div>
 
-            
-                <ul id="msgList" style="list-style-type: none">
-                    <li>Hi</li>
-                    <li>I </li>
-                    <li>manav</li>
-                    <li>Hi</li>
-                    <li>I </li>
-                    <li>manav</li>
-                    <li>Hi</li>
-                    <li>I </li>
-                    <li>manav</li>
-                    <li>Hi</li>
-                    <li>I </li>
-                    <li>manav</li>
-                    <li>Hi</li>
-                    <li>I </li>
-                    <li>manav</li>
-                    <li>Hi</li>
-                    <li>I </li>
-                    <li>manav</li>
-                    <li>Hi</li>
-                    <li>I </li>
-                    <li>manav</li>
-                    <li>Hi</li>
-                    <li>I </li>
-                    <li>manav</li>
-                    <li>Hi</li>
-                    <li>I </li>
-                    <li>manav</li>
-                    <li>Hi</li>
-                    <li>I </li>
-                    <li>manav</li>
-                    <li>Hi</li>
-                    <li>I </li>
-                    <li>manav</li>
-                    <li>Hi</li>
-                    <li>I </li>
-                    <li>manav</li>
-                    <li>Hi</li>
-                    <li>I </li>
-                    <li>manav</li>
-                    <li>Hi</li>
-                    <li>I </li>
-                    <li>manav</li>
-                    <li>Hi</li>
-                    <li>I </li>
-                    <li>manav</li>
-                    <li>Hi</li>
-                    <li>I </li>
-                    <li>manav</li>
-                    <li>Hi</li>
-                    <li>I </li>
-                    <li>manav</li>
-                    <li>Hi</li>
-                    <li>I </li>
-                    <li>manav</li>
-                    <li>Hi</li>
-                    <li>I </li>
-                    <li>manav</li>
-                </ul>
-            
+
+            <ul id="msgList" style="list-style-type: none"
+                class="list-group list-group-flush d-flex flex-column-reverse">
+                <li class="list-group-item">START</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetur ac</li>
+                <li class="lismsgt-group-item">Vestibulum at eros</li>
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetur ac</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetur ac</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetur ac</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetur ac</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetur ac</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetur ac</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetur ac</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetur ac</li>
+                <li class="list-group-item">END</li>
+            </ul>
 
         </div>
 

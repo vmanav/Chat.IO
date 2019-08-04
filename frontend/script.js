@@ -19,6 +19,8 @@ $(function () {
     let chatButton = $('#chatButton')
     let msgList = $('#msgList')
 
+    let clearChat = $('#clearChat')
+
     loginButton.click(() => {
 
         if (loginInput.val() == "") {
@@ -66,12 +68,24 @@ $(function () {
     })
 
     socket.on('recieve_chat', (data) => {
-        msgList.prepend(`<li>${data.username}:${data.message}</li>`)
-        // $("#msgList :first-child").css("color","green")
-        $("#msgList :first-child").css({"color":"green", "transform":"scaleY(1.3)","background-color":"lightgreen"})
-        setTimeout(()=>{
-            $("#msgList :first-child").css({"color":"inherit", "transform":"scaleY(1)", "background-color":"transparent"})
-        },300)
+        msgList.prepend(`<li class="list-group-item">${data.username}:${data.message}</li>`)
+
+        // scrolling to the bottom of chat div
+        var objDiv = document.getElementById("chatDiv");
+        objDiv.scrollTop = objDiv.scrollHeight;
+
+        // $("#msgList :first-child").css({ "transform": "scaleY(1.025)", })
+        $("#msgList :first-child").addClass("list-group-item-warning text-monospace font-weight-bold");
+        setTimeout(() => {
+            $("#msgList :first-child").removeClass("list-group-item-warning text-monospace font-weight-bold");
+            // $("#msgList :first-child").css({ "transform": "scaleY(1)", })
+        }, 300)
+
+    })
+
+    clearChat.click(() => {
+        msgList.html("")
+        console.log("Chat Cleared!")
     })
 
 })
