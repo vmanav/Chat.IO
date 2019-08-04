@@ -1,10 +1,9 @@
-console.log("Frontend running")
+bconsole.log("Frontend running")
 
 let socket = io()
 
 socket.on('connected', () => {
     console.log("-->", socket.id)
-    // socket.emit('xyz')
 })
 
 $(function () {
@@ -29,22 +28,9 @@ $(function () {
         }
 
         loginDiv.removeClass("d-flex").addClass("d-none");
-
-        // loginDiv.hide("fast", () => {
-        //     console.log("hide hogya lagta h")
-        //     chatDiv.show("slow")
-        //     // chatDiv.fadeIn("fast")
-
-        // })
         chatDiv.show("fast")
-        // chatDiv.show()
+
         // loginDiv.fadeOut("fast")
-
-
-        // chatDiv.css("margin-top", "0px")
-        // chatDiv.css("transition","2s")
-        // alert("hhihih")
-        // chatDiv.fadeIn("slow")
         user = loginInput.val()
 
         socket.emit('login', {

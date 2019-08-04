@@ -7,18 +7,31 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>chat.io</title>
 
+
     <!-- socket.io inbuilt <script></script> -->
     <script src="socket.io/socket.io.js"></script>
+    
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    <!-- bootstrap js -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    
+    <!-- my script -->
+    <script src="script.js"></script>
+
+
+
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
     <!-- fa fa icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- my script -->
-    <script src="script.js"></script>
+
+
+
+
     <!-- <font>-->
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,600i&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
@@ -29,11 +42,9 @@
     <link href="https://fonts.googleapis.com/css?family=Neucha&display=swap" rel="stylesheet">
 
 
-
     <style>
         body {
             background: linear-gradient(rgba(255, 255, 255, .7), rgba(255, 255, 255, .7)), url("/bg.jpg");
-
         }
 
         #cubeBox {
@@ -41,7 +52,6 @@
             height: 50vh;
             border-radius: 5px;
             width: 75%;
-
         }
 
         #loginDiv {
@@ -68,7 +78,8 @@
             text-align: center;
             background-color: bisque;
             font-size: 68px;
-            background: -webkit-linear-gradient(#eee, #333);
+            background: -webkit-linear-gradient(red, #333);
+            background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             /* font-family: 'IBM Plex Mono', monospace; */
@@ -99,7 +110,7 @@
         #chatButton:hover {
             opacity: 1;
             transition: 0.3s;
-            transform: scale(1.05)
+            /* transform: scale(1.05) */
         }
 
         #chatInput {
@@ -108,7 +119,6 @@
 
         #chatInput:focus {
             opacity: 0.9;
-
         }
     </style>
 </head>
@@ -149,7 +159,9 @@
                 style="position: sticky;top: 0;z-index: 1;">
                 <button type="button" id="clearChat" class="btn mr-2">Clear Chat</button>
                 <input type="text" class="form-control" placeholder="New Message" id="chatInput" style="width: 50%;">
-                <button id="chatButton" type="button" class="btn ml-2">Send</button>
+                <button id="chatButton" type="button" class="btn ml-2">
+                    <!-- <span class="glyphicon glyphicon-send"></span>&nbsp; -->
+                    Send</button>
             </div>
 
 
