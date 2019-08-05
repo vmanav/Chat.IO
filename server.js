@@ -46,9 +46,9 @@ io.on('connection', (socket) => {
                 return;
             }
 
-            // user exists
+            // user exists case
             io.to(rcpSocket).emit("recieve_chat", {
-                message: `[PRIVATE]` + data.message.split(':')[1],
+                message: `<b>[<i>PRIVATE</i>]</b>` + data.message.split(':')[1],
                 username: data.username
             })
 

@@ -10,13 +10,13 @@
 
     <!-- socket.io inbuilt <script></script> -->
     <script src="socket.io/socket.io.js"></script>
-    
+
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    
+
     <!-- bootstrap js -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    
+
     <!-- my script -->
     <script src="script.js"></script>
 
@@ -48,19 +48,19 @@
         }
 
         #cubeBox {
-            background-color: green;
+            /* background-color: green; */
             height: 50vh;
             border-radius: 5px;
             width: 75%;
         }
 
         #loginDiv {
-            background-color: lightblue;
+            /* background-color: lightblue; */
             height: 100vh;
         }
 
         #chatDiv {
-            background-color: lightsalmon;
+            /* background-color: lightsalmon; */
             height: 100vh;
             overflow-y: auto;
             /* margin-top: -200vh; */
@@ -78,7 +78,9 @@
             text-align: center;
             background-color: bisque;
             font-size: 68px;
-            background: -webkit-linear-gradient(red, #333);
+            /* background: -webkit-linear-gradient(red, #333); */
+            background-image: linear-gradient(319deg, #ff1493 0%, #0000ff 37%, #ff8c00 100%);
+
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -96,18 +98,20 @@
             opacity: 0.7;
         }
 
-        #clearChat:hover {
+        #clearChat:hover,
+        #clearChat:focus {
             opacity: 1;
             transition: 0.3s;
             transform: scale(1.05)
         }
 
         #chatButton {
-            background-color: #26A65B;
+            background-color: #1FCD1C;
             opacity: 0.7;
         }
 
-        #chatButton:hover {
+        #chatButton:hover,
+        #chatButton:focus {
             opacity: 1;
             transition: 0.3s;
             /* transform: scale(1.05) */
@@ -127,9 +131,7 @@
 
     <div id="main" class="container">
 
-        <div id="loginDiv" class="container d-none flex-column justify-content-center align-items-center">
-            <br><br>
-
+        <div id="loginDiv" class="container d-flex flex-column justify-content-center align-items-center">
 
             <div id="cubeBox" class="d-flex flex-column justify-content-around">
 
@@ -141,8 +143,11 @@
 
                     <input type="text" class="form-control" id="loginInput" placeholder="Enter Username"
                         style="width: 30%;">
-                    <button id="loginButton" type="button" class="btn btn-dark"><i
-                            class="fa fa-angle-right"></i></button>
+                    <button id="loginButton" type="button" class="btn btn-dark">
+                        <!-- &nbsp;<i class="fa fa-angle-right"></i>&nbsp; -->
+                        <!-- <i class="fa fa-sign-in"></i> -->
+                        <i class="fa fa-chevron-right"></i>
+                    </button>
 
                 </div>
 
@@ -152,27 +157,21 @@
 
 
 
-        <div id="chatDiv">
-            <!-- style="display:none"> -->
+        <div id="chatDiv" style="display:none">
 
             <div class="container form-group d-flex flex-row justify-content-center p-3"
                 style="position: sticky;top: 0;z-index: 1;">
                 <button type="button" id="clearChat" class="btn mr-2">Clear Chat</button>
                 <input type="text" class="form-control" placeholder="New Message" id="chatInput" style="width: 50%;">
                 <button id="chatButton" type="button" class="btn ml-2">
-                    <!-- <span class="glyphicon glyphicon-send"></span>&nbsp; -->
+                    <i class="fa fa-paper-plane" aria-hidden="true"></i>
                     Send</button>
             </div>
 
 
             <ul id="msgList" style="list-style-type: none"
                 class="list-group list-group-flush d-flex flex-column-reverse">
-                <li class="list-group-item">START</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetur ac</li>
-                <li class="lismsgt-group-item">Vestibulum at eros</li>
-                <li class="list-group-item">Cras justo odio</li>
+                <!-- <li class="list-group-item">START</li>
                 <li class="list-group-item">Dapibus ac facilisis in</li>
                 <li class="list-group-item">Morbi leo risus</li>
                 <li class="list-group-item">Porta ac consectetur ac</li>
@@ -211,7 +210,12 @@
                 <li class="list-group-item">Dapibus ac facilisis in</li>
                 <li class="list-group-item">Morbi leo risus</li>
                 <li class="list-group-item">Porta ac consectetur ac</li>
-                <li class="list-group-item">END</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetur ac</li>
+                <li class="list-group-item">END</li> -->
             </ul>
 
         </div>

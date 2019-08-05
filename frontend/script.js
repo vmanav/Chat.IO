@@ -1,4 +1,4 @@
-bconsole.log("Frontend running")
+console.log("Frontend running")
 
 let socket = io()
 
@@ -22,6 +22,9 @@ $(function () {
 
     loginButton.click(() => {
 
+
+        console.log("CLICK HUA BHAI")
+
         if (loginInput.val() == "") {
             alert("Username can't be empty.")
             return
@@ -32,6 +35,9 @@ $(function () {
 
         // loginDiv.fadeOut("fast")
         user = loginInput.val()
+
+        // displaying the user info at top
+        msgList.prepend(`<li class="list-group-item list-group-item-dark font-weight-bold font-italic">User : ${user}</li>`)
 
         socket.emit('login', {
             user: user
@@ -71,6 +77,7 @@ $(function () {
 
     clearChat.click(() => {
         msgList.html("")
+        msgList.prepend(`<li class="list-group-item list-group-item-dark font-weight-bold font-italic">User : ${user}</li>`)
         console.log("Chat Cleared!")
     })
 
