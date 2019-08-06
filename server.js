@@ -16,15 +16,11 @@ let usersockets = {}
 
 app.use('/', express.static(__dirname + '/frontend'))
 
+// `favicon.ico` is in the `public` folder
 app.use(express.static('public'))
+
+//middleware for favicon 
 app.use(favicon(__dirname + '/public/favicon.ico'))
-
-
-// middleware for favicon
-// app.use(favicon(__dirname + '/frontend/favicon.ico'))
-// app.use(favicon(__dirname + '/frontend/favicon.ico'), ()=>{
-//     console.log("->>>",__dirname)
-// });
 
 io.on('connection', (socket) => {
     console.log("Connection Established ", socket.id)
