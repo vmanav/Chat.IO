@@ -1,11 +1,13 @@
 const express = require('express')
 const socket = require('socket.io')
 const http = require('http')    // http is present in node library
+const favicon = require('serve-favicon');
 
 // specifying heroku's env.PORT
 const PORT = process.env.PORT || 4848;
 
 const app = express()
+
 const server = http.createServer(app)
 
 const io = socket(server)
@@ -13,6 +15,9 @@ const io = socket(server)
 let usersockets = {}
 
 app.use('/', express.static(__dirname + '/frontend'))
+
+// middleware for favicon
+app.use(favicon(__dirname + '/frontend/favicon.ico'));
 
 io.on('connection', (socket) => {
     console.log("Connection Established ", socket.id)
