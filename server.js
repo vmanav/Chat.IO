@@ -30,7 +30,7 @@ io.on('connection', (socket) => {
 
     socket.on('login', (data) => {
         usersockets[data.user] = socket.id
-        console.log(usersockets)
+        // console.log(usersockets)
     })
 
     socket.on("send_chat", (data) => {
