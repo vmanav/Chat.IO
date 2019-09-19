@@ -1,8 +1,8 @@
 // UNDERMAINTENANCE ALERT
 alert("Chat.IO is under maintenance.")
 
-const { cryptr } = require('./cipher.js')
-console.log(cryptr)
+// Refer :
+// https://www.npmjs.com/package/crypto-js
 
 console.log("Frontend running")
 
