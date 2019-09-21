@@ -11,3 +11,14 @@ visit here: [https://chat---io.herokuapp.com/]
 
 ---
 [Manav Verma](https://github.com/vmanav)
+
+
+**TO ADD**
+- [ ] Repair private messaging.
+
+- [ ] Broadcast (POP UP)a message to connected users when someone connects or disconnects.
+
+- [ ] Add “{user} is typing” functionality.
+
+- [ ] Show who’s online.
+
