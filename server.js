@@ -40,46 +40,76 @@ io.on('connection', (socket) => {
     socket.on("send_chat", (data) => {
 
 
-        // private message functionality -->
-        if (data.message.startsWith('@')) {
-            // suppose, data.message = "@a: hello", we have to get 'a' from it.
-            // split at :, then remove '@' from begining
-            let recipient = data.message.split(':')[0].substr(1)
-            let rcpSocket = usersockets[recipient]
+        // //    Old Code : Detecting pvt at server, now shifetd to clientInformation
 
+        // // private message functionality -->
+        // if (data.message.startsWith('@')) {
+        //     // suppose, data.message = "@a: hello", we have to get 'a' from it.
+        //     // split at :, then remove '@' from begining
+        //     let recipient = data.message.split(':')[0].substr(1)
+        //     let rcpSocket = usersockets[recipient]
+        //     //whwn no user exists for private mssg
+        //     if (typeof (rcpSocket) == "undefined") {
+        //         console.log("No such user Found")
+        //         io.to(usersockets[data.username]).emit("recieve_chat", {
+        //             message: ' No Such User Found!',
+        //             username: 'Error while sending to ' + recipient
+        //         })
+        //         return;
+        //     }
+        //     // user exists case
+        //     io.to(rcpSocket).emit("recieve_chat", {
+        //         message: `<b>[<i>PRIVATE</i>]</b>` + data.message.split(':')[1],
+        //         username: data.username
+        //     })
+        // }
+        // else {
+        //     // Normal mssg case    
+        //     io.emit("recieve_chat", {
+        //         message: data.message,
+        //         username: data.username
+        //     })
+        // }
 
-            //whwn no user exists for private mssg
-            if (typeof (rcpSocket) == "undefined") {
-                console.log("No such user Found")
+        //  ------------------------------------------------
 
-                io.to(usersockets[data.username]).emit("recieve_chat", {
-                    message: ' No Such User Found!',
-                    username: 'Error while sending to ' + recipient
-                })
-                return;
-            }
-
-            // user exists case
-            io.to(rcpSocket).emit("recieve_chat", {
-                message: `<b>[<i>PRIVATE</i>]</b>` + data.message.split(':')[1],
-                username: data.username
+        if (data.recipient == null) {
+            // RCP is NULL case
+            io.emit("recieve_chat", {
+                message: data.message,
+                username: data.username,
+                private: false
             })
 
         }
         else {
-            // Normal mssg case    
-            io.emit("recieve_chat", {
+            // RCP is a value
+            let rcpSocket = usersockets[data.recipient]
+
+            //  when no user exists for private mssg
+            if (typeof (rcpSocket) == "undefined") {
+
+                // CODE THIS WITH ALERT
+                console.log("No such user Found")
+                io.to(usersockets[data.username]).emit("recieve_chat", {
+                    recipient: data.recipient
+                })
+                return;
+
+            }
+
+            io.to(rcpSocket).emit("recieve_chat", {
                 message: data.message,
-                username: data.username
+                username: data.username,
+                private: true
             })
         }
     })
 
-    socket.on('disconnect',(reason) => {
+    socket.on('disconnect', (reason) => {
 
-
-        console.log("reason---->")
-        console.log(reason);
+        // console.log("reason---->")
+        // console.log(reason);
         console.log('user disconnected, socketID : ', socket.id);
     });
 
