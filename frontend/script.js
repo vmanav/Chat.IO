@@ -59,22 +59,39 @@ $(function () {
 
         // sending empty messages
         if (chatInput.val() == "") {
-            alert("Message can't be body empty!")
+            alert("Message cannot be body empty!")
             return
         }
 
+        var key = user;
+        var plainM = chatInput.val();
+        var cipherM = CryptoJS.AES.encrypt(plainM, key);
 
 
-        
         socket.emit('send_chat', {
             username: user,
-            message: chatInput.val()
+            message: cipherM.toString()
         })
         chatInput.val("")
     })
 
     socket.on('recieve_chat', (data) => {
-        msgList.prepend(`<li class="list-group-item">${data.username}:${data.message}</li>`)
+
+
+        console.log("Bhejne vala : ", data.username);
+        console.log("Bheja kya : ", data.message);
+
+        var key = data.username;
+        var cipherM = data.message;
+
+        var bytes = CryptoJS.AES.decrypt(cipherM, key)
+
+        var plainM = bytes.toString(CryptoJS.enc.Utf8);
+
+        console.log("Plain Text : ", plainM);
+
+
+        msgList.prepend(`<li class="list-group-item">${data.username}:${plainM}</li>`)
 
         // scrolling to the bottom of chat div
         var objDiv = document.getElementById("chatDiv");

@@ -7,7 +7,6 @@ const favicon = require('serve-favicon');
 var CryptoJS = require("crypto-js");
 
 
-
 // specifying heroku's env.PORT
 const PORT = process.env.PORT || 4848;
 
@@ -39,6 +38,10 @@ io.on('connection', (socket) => {
     })
 
     socket.on("send_chat", (data) => {
+
+
+        console.log("Mujhe ye Message Mila ->", data.message)
+
 
         // private message functionality -->
         if (data.message.startsWith('@')) {
