@@ -54,7 +54,7 @@ $(function () {
 
         // sending empty messages
         if (chatInput.val() == "") {
-            alert("Message cannot be body empty!")
+            alert("Why send an empty Message ?")
             return
         }
 

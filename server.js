@@ -74,6 +74,15 @@ io.on('connection', (socket) => {
             })
         }
     })
+
+    socket.on('disconnect',(reason) => {
+
+
+        console.log("reason---->")
+        console.log(reason);
+        console.log('user disconnected, socketID : ', socket.id);
+    });
+
 })
 
 server.listen(PORT, () => {
