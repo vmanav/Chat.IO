@@ -1,10 +1,9 @@
 // UNDERMAINTENANCE ALERT
-alert("Chat.IO is under maintenance.")
+// alert("Chat.IO is under maintenance.")
 
 // Dummy Code to Stop the Functioning on my App
-const { cryptr } = require('./cipher.js');
-console.log(cryptr)
-
+// const { cryptr } = require('./cipher.js');
+// console.log(cryptr)
 
 
 // Refer :
@@ -64,6 +63,9 @@ $(function () {
             return
         }
 
+
+
+        
         socket.emit('send_chat', {
             username: user,
             message: chatInput.val()

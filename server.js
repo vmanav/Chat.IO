@@ -3,6 +3,11 @@ const socket = require('socket.io')
 const http = require('http')    // http is present in node library
 const favicon = require('serve-favicon');
 
+// CryptoJS module
+var CryptoJS = require("crypto-js");
+
+
+
 // specifying heroku's env.PORT
 const PORT = process.env.PORT || 4848;
 
