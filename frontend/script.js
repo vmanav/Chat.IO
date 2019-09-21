@@ -1,20 +1,17 @@
 // UNDERMAINTENANCE ALERT
-// alert("Chat.IO is under maintenance.")
+alert("Chat.IO is under maintenance.")
 
 // Dummy Code to Stop the Functioning on my App
-// const { cryptr } = require('./cipher.js');
-// console.log(cryptr)
+const { cryptr } = require('./cipher.js');
+console.log(cryptr)
 
 
-// Refer :
-// https://www.npmjs.com/package/crypto-js
-
-console.log("Frontend running")
+// console.log("Frontend running")
 
 let socket = io()
 
 socket.on('connected', () => {
-    console.log("-->", socket.id)
+    console.log("Socket ID :", socket.id)
 })
 
 $(function () {
@@ -32,9 +29,7 @@ $(function () {
     let clearChat = $('#clearChat')
 
     loginButton.click(() => {
-
-
-        console.log("CLICK HUA BHAI")
+        // console.log("CLICK HUA BHAI")
 
         if (loginInput.val() == "") {
             alert("Username can't be empty.")
@@ -77,18 +72,11 @@ $(function () {
 
     socket.on('recieve_chat', (data) => {
 
-
-        console.log("Bhejne vala : ", data.username);
-        console.log("Bheja kya : ", data.message);
-
         var key = data.username;
         var cipherM = data.message;
 
         var bytes = CryptoJS.AES.decrypt(cipherM, key)
-
         var plainM = bytes.toString(CryptoJS.enc.Utf8);
-
-        console.log("Plain Text : ", plainM);
 
 
         msgList.prepend(`<li class="list-group-item">${data.username}:${plainM}</li>`)

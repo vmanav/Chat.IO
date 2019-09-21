@@ -27,7 +27,7 @@ app.use(express.static('public'))
 app.use(favicon(__dirname + '/public/favicon.ico'))
 
 io.on('connection', (socket) => {
-    console.log("Connection Established ", socket.id)
+    console.log("Connection Established :", socket.id)
 
     // When the connection is made succesfully
     socket.emit('connected')
@@ -38,9 +38,6 @@ io.on('connection', (socket) => {
     })
 
     socket.on("send_chat", (data) => {
-
-
-        console.log("Mujhe ye Message Mila ->", data.message)
 
 
         // private message functionality -->
