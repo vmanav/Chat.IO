@@ -7,7 +7,6 @@ console.log(cryptr)
 
 
 // console.log("Frontend running")
-
 let socket = io()
 
 socket.on('connected', () => {
@@ -50,16 +49,18 @@ $(function () {
         })
     })
 
-    chatButton.click(() => {
 
+    //Clicking on SEND button
+    chatButton.click(() => {
         recipient = null;
 
-        // sending empty messages
         if (chatInput.val() == "") {
+            // EMPTY MSSG BODY
             alert("Why send an empty Message ?")
             return
         }
 
+        // ENCRYPTION
         var key = user;
         var plainM = chatInput.val();
 
@@ -67,42 +68,28 @@ $(function () {
             var recipient = plainM.split(':')[0].substr(1);
             plainM = plainM.split(':')[1]
         }
-
         var cipherM = CryptoJS.AES.encrypt(plainM, key);
 
-        if (recipient == null) {
-            socket.emit('send_chat', {
-                username: user,
-                message: cipherM.toString(),
-                recipient: recipient
-            })
-        }
-
-        else {
-            socket.emit('send_chat', {
-                username: user,
-                message: cipherM.toString(),
-                recipient: recipient
-            })
-        }
+        socket.emit('send_chat', {
+            username: user,
+            message: cipherM.toString(),
+            recipient: recipient
+        })
 
         chatInput.val("")
     })
 
+
     socket.on('recieve_chat', (data) => {
+        // console.log("Recieved Data --->");console.log(data.username);console.log(data.message);console.log(data.private)
 
-        // console.log("Recieved Data --->")
-        // console.log(data.username)
-        // console.log(data.message)
-        // console.log(data.private)
-
-        if(data.recipient) {
-
+        // recipient field is present in `data`
+        if (data.recipient) {
             alert(`Error while sending to ${data.recipient}, No Such User Found!\nFollow: @username: Your Message`)
             return;
         }
 
-        // decryption ----
+        // DECRYPTION ----
         var key = data.username;
         var cipherM = data.message;
 
@@ -110,9 +97,11 @@ $(function () {
         var plainM = bytes.toString(CryptoJS.enc.Utf8);
 
 
-
+        plainM = `&nbsp;` + plainM;
+        // PRIVATE MSSG
         if (data.private == true) {
-            plainM = `<b>[ <i>PRIVATE</i> ]</b>` + plainM
+            // plainM = `<b>[ <i>PRIVATE</i> ]</b>` + plainM
+            plainM = `<i class="fa fa-user-secret"></i>&nbsp;` + plainM
         }
 
         msgList.prepend(`<li class="list-group-item">${data.username}:${plainM}</li>`)

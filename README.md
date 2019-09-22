@@ -14,7 +14,7 @@ visit here: [https://chat---io.herokuapp.com/]
 
 
 **TO ADD**
-- [ ] Repair private messaging.
+- [X] Repair private messaging.
 
 - [ ] Broadcast (POP UP)a message to connected users when someone connects or disconnects.
 

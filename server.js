@@ -74,7 +74,7 @@ io.on('connection', (socket) => {
         //  ------------------------------------------------
 
         if (data.recipient == null) {
-            // RCP is NULL case
+            // RCP is NULL, NORMAL MSSG
             io.emit("recieve_chat", {
                 message: data.message,
                 username: data.username,
@@ -83,21 +83,20 @@ io.on('connection', (socket) => {
 
         }
         else {
-            // RCP is a value
+            // RCP is not NULL, PVT MSG
             let rcpSocket = usersockets[data.recipient]
 
             //  when no user exists for private mssg
             if (typeof (rcpSocket) == "undefined") {
 
-                // CODE THIS WITH ALERT
                 console.log("No such user Found")
                 io.to(usersockets[data.username]).emit("recieve_chat", {
                     recipient: data.recipient
                 })
                 return;
-
             }
 
+            // PRIVATE MSSG
             io.to(rcpSocket).emit("recieve_chat", {
                 message: data.message,
                 username: data.username,
@@ -105,6 +104,8 @@ io.on('connection', (socket) => {
             })
         }
     })
+
+
 
     socket.on('disconnect', (reason) => {
 
