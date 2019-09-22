@@ -47,6 +47,21 @@ $(function () {
         socket.emit('login', {
             user: user
         })
+
+
+
+        // Alerting for User Enter
+        socket.on('alertAll', (data) => {
+
+            console.log("Data is -->", data);
+            if (data.incoming == true) {
+                alert(`${data.name} Joined the chat.`)
+            }
+            else{
+                alert(`${data.name} has left the chat.`)
+            }
+        })
+
     })
 
 
@@ -97,11 +112,13 @@ $(function () {
         var plainM = bytes.toString(CryptoJS.enc.Utf8);
 
 
-        plainM = `&nbsp;` + plainM;
         // PRIVATE MSSG
         if (data.private == true) {
             // plainM = `<b>[ <i>PRIVATE</i> ]</b>` + plainM
-            plainM = `<i class="fa fa-user-secret"></i>&nbsp;` + plainM
+            plainM = `&nbsp;<i class="fa fa-user-secret" style="color:#C1292E"></i>&nbsp;` + plainM
+        }
+        else {
+            plainM = `&nbsp;` + plainM;
         }
 
         msgList.prepend(`<li class="list-group-item">${data.username}:${plainM}</li>`)

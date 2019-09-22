@@ -3,10 +3,6 @@ const socket = require('socket.io')
 const http = require('http')    // http is present in node library
 const favicon = require('serve-favicon');
 
-// CryptoJS module
-var CryptoJS = require("crypto-js");
-
-
 // specifying heroku's env.PORT
 const PORT = process.env.PORT || 4848;
 
@@ -26,15 +22,35 @@ app.use(express.static('public'))
 //middleware for favicon 
 app.use(favicon(__dirname + '/public/favicon.ico'))
 
+
+// Get the `keys` for a particular `value`
+function getKeyByValue(object, value) {
+    for (var prop in object) {
+        if (object.hasOwnProperty(prop)) {
+            if (object[prop] === value) {
+                return prop;
+            }
+        }
+    }
+}
+
+
 io.on('connection', (socket) => {
     console.log("Connection Established :", socket.id)
 
+    // console.log("Type of socket.id -->", typeof(socket.id))
     // When the connection is made succesfully
     socket.emit('connected')
 
     socket.on('login', (data) => {
         usersockets[data.user] = socket.id
+        // console.log(typeof (usersockets))
         // console.log(usersockets)
+
+        socket.broadcast.emit('alertAll', {
+            name: data.user,
+            incoming: true
+        })
     })
 
     socket.on("send_chat", (data) => {
@@ -72,6 +88,7 @@ io.on('connection', (socket) => {
         // }
 
         //  ------------------------------------------------
+        // NEW CODEs
 
         if (data.recipient == null) {
             // RCP is NULL, NORMAL MSSG
@@ -108,10 +125,17 @@ io.on('connection', (socket) => {
 
 
     socket.on('disconnect', (reason) => {
-
-        // console.log("reason---->")
-        // console.log(reason);
+        let username = null;
         console.log('user disconnected, socketID : ', socket.id);
+
+        username = getKeyByValue(usersockets, socket.id);
+
+        if (username) {
+            socket.broadcast.emit('alertAll', {
+                name: username,
+                incoming: false
+            })
+        }
     });
 
 })
