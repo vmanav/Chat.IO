@@ -63,7 +63,7 @@ $(function () {
                     killer: false,
                     animation: {
                         open: 'animated bounceInRight', // Animate.css class names
-                        close: 'animated pulse' // Animate.css class names
+                        close: 'animated pulse'
                     }
 
                 }).show();
@@ -81,8 +81,8 @@ $(function () {
                     closeWith: ['click'],
                     killer: false,
                     animation: {
-                        open: 'animated bounceInLeft', // Animate.css class names
-                        close: 'animated fadeOut' // Animate.css class names
+                        open: 'animated bounceInLeft', 
+                        close: 'animated fadeOut' 
                     }
 
                 }).show();
@@ -127,7 +127,22 @@ $(function () {
 
         // recipient field is present in `data`
         if (data.recipient) {
-            alert(`Error while sending to ${data.recipient}, No Such User Found!\nFollow: @username: Your Message`)
+            alert(`Error while sending to ${data.recipient}, No Such User Found!`)
+            new Noty({
+                type: 'info',
+                layout: 'centerLeft',
+                theme: 'metroui',
+                text: `Follow: @username: Your Message.`,
+                timeout: '1500',
+                progressBar: true,
+                closeWith: ['click'],
+                killer: false,
+                animation: {
+                    open: 'animated pulse', 
+                    close: 'animated fadeOut' 
+                }
+
+            }).show();
             return;
         }
 
