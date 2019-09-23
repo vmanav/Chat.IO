@@ -28,7 +28,6 @@ $(function () {
     let clearChat = $('#clearChat')
 
     loginButton.click(() => {
-        // console.log("CLICK HUA BHAI")
 
         if (loginInput.val() == "") {
             alert("Username can't be empty.")
@@ -38,27 +37,55 @@ $(function () {
         loginDiv.removeClass("d-flex").addClass("d-none");
         chatDiv.show("fast")
 
-        // loginDiv.fadeOut("fast")
         user = loginInput.val()
 
-        // displaying the user info at top
+        // Displaying the username at top
         msgList.prepend(`<li class="list-group-item list-group-item-dark font-weight-bold font-italic">User : ${user}</li>`)
 
         socket.emit('login', {
             user: user
         })
 
-
-
-        // Alerting for User Enter
+        // User Enter/ Leave notifications
         socket.on('alertAll', (data) => {
+            // console.log("Data is -->", data);
 
-            console.log("Data is -->", data);
+            // Some User Joins chat
             if (data.incoming == true) {
-                alert(`${data.name} Joined the chat.`)
+                new Noty({
+                    type: 'success',
+                    layout: 'bottomRight',
+                    theme: 'metroui',
+                    text: `${data.name} joined the chat.`,
+                    timeout: '2500',
+                    progressBar: true,
+                    closeWith: ['click'],
+                    killer: false,
+                    animation: {
+                        open: 'animated bounceInRight', // Animate.css class names
+                        close: 'animated pulse' // Animate.css class names
+                    }
+
+                }).show();
             }
-            else{
-                alert(`${data.name} has left the chat.`)
+
+            // Some User Leaves chat
+            else {
+                new Noty({
+                    type: 'error',
+                    layout: 'bottomLeft',
+                    theme: 'metroui',
+                    text: `${data.name} has left the chat.`,
+                    timeout: '2000',
+                    progressBar: true,
+                    closeWith: ['click'],
+                    killer: false,
+                    animation: {
+                        open: 'animated bounceInLeft', // Animate.css class names
+                        close: 'animated fadeOut' // Animate.css class names
+                    }
+
+                }).show();
             }
         })
 
