@@ -1,9 +1,9 @@
-// UNDERMAINTENANCE ALERT
-alert("Chat.IO is under maintenance.")
+// // UNDERMAINTENANCE ALERT
+// alert("Chat.IO is under maintenance.")
 
-// Dummy Code to Stop the Functioning on my App
-const { cryptr } = require('./cipher.js');
-console.log(cryptr)
+// // Dummy Code to Stop the Functioning on my App
+// const { cryptr } = require('./cipher.js');
+// console.log(cryptr)
 
 
 // console.log("Frontend running")
