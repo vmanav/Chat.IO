@@ -55,13 +55,10 @@ The functionalities supported are stated below :
 |:-------:|
 |*Landing Page*|
 ![Basic Usage](./public/screenshots/basicUsage.gif)
-|:-------:|
 |*Basic Usage*|
 ![Private Messaging](./public/screenshots/privateMessaging.gif)
-|:-------:|
 |*Private Messaging*|
 ![Encrypted Chats](./public/screenshots/encryptedChats.gif)
-|:-------:|
 |*Encrypted Chats*|
 
 
