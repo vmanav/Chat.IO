@@ -20,13 +20,15 @@
 ## About the Project
 
 Chat.IO is a Node.js and  Socket.IO based real time chat application.
+<br/>
 The functionalities supported are stated below :
 
-* Host Register/ Deregister.
-* Visitor Check-In/ Check-Out.
-* Visitor Check-In Details mail and sms to respective host.
-* Visit Details mail to visitor on Check-Out.
-
+```
+- Real Time Chat.
+- Public and Private Messaging.
+- Encrypted Chats.
+- User Entering/Leaving Channel Notifications to all users.
+```
 ## Usage
 
 ### Prerequisites 
@@ -52,15 +54,12 @@ The functionalities supported are stated below :
 |![Home Page](./public/screenshots/landingPage.png)|
 |:-------:|
 |*Landing Page*|
-
 |![Basic Usage](./public/screenshots/basicUsage.gif)|
 |:-------:|
 |*Basic Usage*|
-
 |![Private Messaging](./public/screenshots/privateMessaging.gif)|
 |:-------:|
 |*Private Messaging*|
-
 |![Encrypted Chats](./public/screenshots/encryptedChats.gif)|
 |:-------:|
 |*Encrypted Chats*|

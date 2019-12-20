@@ -5,7 +5,6 @@
 // const { cryptr } = require('./cipher.js');
 // console.log(cryptr)
 
-
 // console.log("Frontend running")
 let socket = io()
 
